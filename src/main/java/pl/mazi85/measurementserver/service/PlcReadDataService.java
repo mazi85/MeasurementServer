@@ -24,7 +24,7 @@ public class PlcReadDataService {
 
         PlcReadRequest.Builder builder = plcConnection.readRequestBuilder();
         for (int i = 0; i < registers.size(); i++) {
-            builder.addItem("value" + (i+1), "holding-register:"+ registers.get(i));
+            builder.addItem(registers.get(i).toString(), "holding-register:"+ registers.get(i));
         }
 
         return builder.build();

@@ -27,8 +27,17 @@ public class MeasSource {
             joinColumns = @JoinColumn(name = "meas_source_id"),
             inverseJoinColumns = @JoinColumn(name = "sample_def_id"))
     private List<SampleDef> sampleDefs = new ArrayList<>();
+    @Transient
+    private String connectionString;
 
-
-
-
+    public String getConnectionString() {
+        StringBuilder connectionBuilder = new StringBuilder();
+        connectionBuilder
+                .append(commProtocol.getName())
+                .append(":tcp://")
+                .append(ip)
+                .append(":")
+                .append(port);
+        return connectionBuilder.toString();
+    }
 }
