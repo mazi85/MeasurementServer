@@ -1,8 +1,7 @@
 package pl.mazi85.measurementserver.model;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -10,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter  @Getter  @Slf4j
+@AllArgsConstructor @NoArgsConstructor @Builder
+
 @Entity(name = "meas_sources")
 public class MeasSource {
 
