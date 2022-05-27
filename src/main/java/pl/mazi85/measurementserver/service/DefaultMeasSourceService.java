@@ -54,4 +54,10 @@ public class DefaultMeasSourceService implements MeasSourceService {
 
         return collect;
     }
+
+    @Override
+    public void delete(Long measSourceId) {
+        MeasSource entity = measSourceRepository.getReferenceById(measSourceId);
+        measSourceRepository.delete(entity);
+    }
 }

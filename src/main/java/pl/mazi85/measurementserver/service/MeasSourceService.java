@@ -9,4 +9,6 @@ public interface MeasSourceService {
     void createMeasSource(CreateMeasSourceForm createMeasSourceForm);
 
     List<ListMeasSourceForm> listAll();
+
+    void delete(Long measSourceId);
 }

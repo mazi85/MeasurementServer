@@ -3,6 +3,8 @@ package pl.mazi85.measurementserver.model;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "samples")
@@ -20,4 +22,12 @@ public class Sample {
     @ManyToOne
     @JoinColumn(name="sample_def_id")
     private SampleDef sampleDef;
+
+    @Column(name = "created_on",updatable = false)
+    private LocalDateTime createdOn;
+
+    @PrePersist
+    public void prePersist() {
+        createdOn = LocalDateTime.now(Clock.systemUTC());
+    }
 }

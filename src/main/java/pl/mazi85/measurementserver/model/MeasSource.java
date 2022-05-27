@@ -5,6 +5,8 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,12 @@ public class MeasSource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
+    @Size(min=15,max = 15)
     private String ip;
+    @NotBlank
     private String port;
     @ManyToOne
     @JoinColumn(name="protocol_id")

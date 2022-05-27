@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 
 @Setter @Getter @Slf4j
@@ -17,10 +19,14 @@ public class SampleDef {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String unit;
     private Double lowRange;
     private Double highRange;
+    @NotBlank
+    @Min(1)
     private Integer register;
 
 }
