@@ -1,8 +1,8 @@
 package pl.mazi85.measurementserver.service;
 
-import pl.mazi85.measurementserver.controller.CreateMeasSourceForm;
-import pl.mazi85.measurementserver.controller.EditMeasSourceForm;
-import pl.mazi85.measurementserver.controller.ListMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.CreateMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.EditMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.ListMeasSourceForm;
 
 import java.util.List;
 

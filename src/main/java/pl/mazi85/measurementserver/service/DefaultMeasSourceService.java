@@ -2,9 +2,9 @@ package pl.mazi85.measurementserver.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.mazi85.measurementserver.controller.CreateMeasSourceForm;
-import pl.mazi85.measurementserver.controller.EditMeasSourceForm;
-import pl.mazi85.measurementserver.controller.ListMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.CreateMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.EditMeasSourceForm;
+import pl.mazi85.measurementserver.controller.meassource.ListMeasSourceForm;
 import pl.mazi85.measurementserver.model.CommProtocol;
 import pl.mazi85.measurementserver.model.MeasSource;
 import pl.mazi85.measurementserver.repository.CommProtocolRepository;

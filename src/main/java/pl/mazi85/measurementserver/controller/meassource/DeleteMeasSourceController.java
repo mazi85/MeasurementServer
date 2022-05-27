@@ -1,4 +1,4 @@
-package pl.mazi85.measurementserver.controller;
+package pl.mazi85.measurementserver.controller.meassource;
 
 
 import lombok.RequiredArgsConstructor;

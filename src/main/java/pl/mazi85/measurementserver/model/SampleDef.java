@@ -4,12 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Setter @Getter @Slf4j
@@ -28,5 +27,7 @@ public class SampleDef {
     @NotBlank
     @Min(1)
     private Integer register;
+    @ManyToMany(mappedBy = "sampleDefs")
+    private List<MeasSource> measSources = new ArrayList<>();
 
 }

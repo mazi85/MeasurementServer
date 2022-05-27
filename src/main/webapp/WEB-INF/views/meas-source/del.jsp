@@ -13,7 +13,7 @@
 <body>
 <form method="post">
     <input type="hidden" value="${measSourceId}" name="measSourceId">
-    USUNĄĆ?: <input type="submit" value="POTWIERDZAM"> <p>&emsp</p> <a href="/meas-source/list">ANULUJ</a>
+    USUNĄĆ ŹRÓDŁO i JEGO DANE? <input type="submit" value="POTWIERDZAM"> <p>&emsp;</p> <a href="/meas-source/list">ANULUJ</a>
 </form>
 </body>
 </html>

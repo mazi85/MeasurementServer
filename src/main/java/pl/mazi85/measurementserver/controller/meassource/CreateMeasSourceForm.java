@@ -1,17 +1,14 @@
-package pl.mazi85.measurementserver.controller;
+package pl.mazi85.measurementserver.controller.meassource;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import pl.mazi85.measurementserver.model.CommProtocol;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Setter
 @Getter
-@Builder
-public class EditMeasSourceForm {
+public class CreateMeasSourceForm {
 
     @NotBlank
     private String name;
@@ -20,5 +17,5 @@ public class EditMeasSourceForm {
     @Pattern(regexp = "\\d+")
     private String port;
 
-    private CommProtocol commProtocol;
+    private Long commProtocolId;
 }

@@ -45,7 +45,7 @@
             <td style="width: 500px">
                 <a href="/meas-source/delete/${measSource.id}">USUŃ</a>
                 <a href="/meas-source/edit/${measSource.id}">EDYTUJ</a>
-                <a href="/meas-source/edit/${measSource.id}">DODAJ REJ.</a>
+                <a href="/meas-source/${measSource.id}/sample-def/list">DODAJ REJ.</a>
                 <a href="/read/${measSource.id}">POMIAR</a>
             </td>
         </tr>

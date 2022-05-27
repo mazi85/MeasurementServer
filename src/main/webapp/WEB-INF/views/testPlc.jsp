@@ -11,12 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    <h4><a href="/read">ODŚWIEŻ</a> </h4>
-</div>
+
 <c:forEach items="${valuesMap}" var="entry">
     ${entry.key} - ${entry.value} <br/>
 </c:forEach>
+
+<div>
+    <h4><a href="/meas-source/list">POWRÓT</a> </h4>
+</div>
 
 </body>
 </html>
