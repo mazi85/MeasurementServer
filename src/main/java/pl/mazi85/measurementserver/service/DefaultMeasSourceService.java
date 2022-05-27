@@ -3,6 +3,7 @@ package pl.mazi85.measurementserver.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mazi85.measurementserver.controller.CreateMeasSourceForm;
+import pl.mazi85.measurementserver.controller.EditMeasSourceForm;
 import pl.mazi85.measurementserver.controller.ListMeasSourceForm;
 import pl.mazi85.measurementserver.model.CommProtocol;
 import pl.mazi85.measurementserver.model.MeasSource;
@@ -59,5 +60,26 @@ public class DefaultMeasSourceService implements MeasSourceService {
     public void delete(Long measSourceId) {
         MeasSource entity = measSourceRepository.getReferenceById(measSourceId);
         measSourceRepository.delete(entity);
+    }
+
+    @Override
+    public EditMeasSourceForm findById(Long id) {
+        MeasSource measSource = measSourceRepository.getReferenceById(id);
+        return EditMeasSourceForm.builder()
+                .name(measSource.getName())
+                .ip(measSource.getIp())
+                .port(measSource.getPort())
+                .commProtocol(measSource.getCommProtocol())
+                .build();
+    }
+
+    @Override
+    public void editMeasSource(EditMeasSourceForm editMeasSourceForm, Long measSourceId) {
+        MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        measSource.setName(editMeasSourceForm.getName());
+        measSource.setIp(editMeasSourceForm.getIp());
+        measSource.setPort(editMeasSourceForm.getPort());
+        measSource.setCommProtocol(editMeasSourceForm.getCommProtocol());
+        measSourceRepository.save(measSource);
     }
 }
