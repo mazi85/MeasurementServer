@@ -1,4 +1,4 @@
-package pl.mazi85.measurementserver.service;
+package pl.mazi85.measurementserver.service.meassource;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -7,8 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.mazi85.measurementserver.model.MeasSource;
-import pl.mazi85.measurementserver.service.MeasSourceService;
+import pl.mazi85.measurementserver.service.meassource.MeasSourceService;
 import pl.mazi85.measurementserver.service.SampleDefService;
 
 @Controller
@@ -24,6 +23,7 @@ public class ListSampleDefController {
 
         model.addAttribute("measSourceName",measSourceService.findById(measSourceId).getName());
         model.addAttribute("listSampleDefForm", sampleDefService.listAllByMeasSource(measSourceId));
+        model.addAttribute("measSourceId", measSourceId);
         return "/sample-def/list";
     }
 

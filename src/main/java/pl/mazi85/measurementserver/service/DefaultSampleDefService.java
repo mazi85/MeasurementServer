@@ -2,6 +2,7 @@ package pl.mazi85.measurementserver.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.mazi85.measurementserver.controller.sampledef.AddSampleDefForm;
 import pl.mazi85.measurementserver.controller.sampledef.ListSampleDefForm;
 import pl.mazi85.measurementserver.model.MeasSource;
 import pl.mazi85.measurementserver.model.SampleDef;
@@ -34,5 +35,21 @@ public class DefaultSampleDefService implements SampleDefService {
                         .build())
                         .collect(Collectors.toList());
         return listSampleDefForms;
+    }
+
+    @Override
+    public SampleDef create(AddSampleDefForm addSampleDefForm, Long measSourceId) {
+        SampleDef sampleDef = sampleDefRepository.save(SampleDef.builder()
+                .name(addSampleDefForm.getName())
+                .register(addSampleDefForm.getRegister())
+                .lowRange(addSampleDefForm.getLowRange())
+                .highRange(addSampleDefForm.getHighRange())
+                .unit(addSampleDefForm.getUnit())
+                .build());
+
+        MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        measSource.getSampleDefs().add(sampleDef);
+        measSourceRepository.save(measSource);
+        return sampleDef;
     }
 }

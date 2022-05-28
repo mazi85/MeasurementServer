@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.mazi85.measurementserver.service.CommProtocolService;
-import pl.mazi85.measurementserver.service.MeasSourceService;
+import pl.mazi85.measurementserver.service.meassource.MeasSourceService;
 
 import javax.validation.Valid;
 

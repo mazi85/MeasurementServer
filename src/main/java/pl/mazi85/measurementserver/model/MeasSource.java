@@ -3,6 +3,8 @@ package pl.mazi85.measurementserver.model;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -34,6 +36,8 @@ public class MeasSource {
             joinColumns = @JoinColumn(name = "meas_source_id"),
             inverseJoinColumns = @JoinColumn(name = "sample_def_id"))
     private List<SampleDef> sampleDefs = new ArrayList<>();
+    @Value("${some.key:false}")
+    private boolean recording;
     @Transient
     private String connectionString;
 

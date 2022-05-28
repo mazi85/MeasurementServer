@@ -20,7 +20,7 @@
 <body>
 <h2>${measSourceName}</h2>
 <div>
-    <h4><a href="/meas-source/add">+ DODAJ REJESTR</a> </h4>
+    <h4><a href="/meas-source/${measSourceId}/sample-def/add">+ DODAJ REJESTR</a> </h4>
 </div>
 
 <table style="background-color: lightsteelblue">

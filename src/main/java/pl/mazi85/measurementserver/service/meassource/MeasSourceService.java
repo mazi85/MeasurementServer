@@ -1,4 +1,4 @@
-package pl.mazi85.measurementserver.service;
+package pl.mazi85.measurementserver.service.meassource;
 
 import pl.mazi85.measurementserver.controller.meassource.CreateMeasSourceForm;
 import pl.mazi85.measurementserver.controller.meassource.EditMeasSourceForm;
