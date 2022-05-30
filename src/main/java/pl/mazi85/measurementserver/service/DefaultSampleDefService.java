@@ -3,6 +3,7 @@ package pl.mazi85.measurementserver.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mazi85.measurementserver.controller.sampledef.AddSampleDefForm;
+import pl.mazi85.measurementserver.controller.sampledef.EditSampleDefForm;
 import pl.mazi85.measurementserver.controller.sampledef.ListSampleDefForm;
 import pl.mazi85.measurementserver.model.MeasSource;
 import pl.mazi85.measurementserver.model.SampleDef;
@@ -51,5 +52,30 @@ public class DefaultSampleDefService implements SampleDefService {
         measSource.getSampleDefs().add(sampleDef);
         measSourceRepository.save(measSource);
         return sampleDef;
+    }
+
+    @Override
+    public EditSampleDefForm findSampleDefById(Long sampleDefId) {
+        SampleDef sampleDef = sampleDefRepository.getReferenceById(sampleDefId);
+
+        return EditSampleDefForm.builder()
+                .name(sampleDef.getName())
+                .register(sampleDef.getRegister())
+                .lowRange(sampleDef.getLowRange())
+                .highRange(sampleDef.getHighRange())
+                .unit(sampleDef.getUnit())
+                .build();
+    }
+
+    @Override
+    public void editSampleDef(EditSampleDefForm editSampleDefForm, Long sampleDefId) {
+
+        SampleDef sampleDef = sampleDefRepository.getReferenceById(sampleDefId);
+        sampleDef.setName(editSampleDefForm.getName());
+        sampleDef.setUnit(editSampleDefForm.getUnit());
+        sampleDef.setRegister(editSampleDefForm.getRegister());
+        sampleDef.setLowRange(editSampleDefForm.getLowRange());
+        sampleDef.setHighRange(editSampleDefForm.getHighRange());
+        sampleDefRepository.save(sampleDef);
     }
 }

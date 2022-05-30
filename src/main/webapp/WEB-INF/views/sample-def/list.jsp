@@ -44,7 +44,7 @@
 
             <td style="width: 500px">
                 <a href="/meas-source/delete/${sampleDef.id}">USUŃ</a>
-                <a href="/meas-source/edit/${sampleDef.id}">EDYTUJ</a>
+                <a href="/meas-source/${measSourceId}/sample-def/edit/${sampleDef.id}">EDYTUJ</a>
             </td>
         </tr>
     </c:forEach>
