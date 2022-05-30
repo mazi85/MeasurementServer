@@ -13,7 +13,6 @@ import javax.persistence.Id;
 
 @Setter
 @Getter
-@Slf4j
 @Entity(name = "comm_protocols")
 public class CommProtocol {
     @Id

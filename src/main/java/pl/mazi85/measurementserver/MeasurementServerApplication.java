@@ -13,7 +13,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 @SpringBootApplication
-@Slf4j
 public class MeasurementServerApplication {
 
 	public static void main(String[] args) {
