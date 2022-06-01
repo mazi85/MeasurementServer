@@ -24,7 +24,7 @@ public class MeasSource {
     @NotBlank
     private String name;
     @NotBlank
-    @Size(min=15,max = 15)
+    @Size(min=7,max = 15)
     private String ip;
     @NotBlank
     private String port;

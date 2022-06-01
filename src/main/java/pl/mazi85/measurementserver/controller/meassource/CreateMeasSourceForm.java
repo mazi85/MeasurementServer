@@ -12,7 +12,7 @@ public class CreateMeasSourceForm {
 
     @NotBlank
     private String name;
-    @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\.\\d{3}")
+    @Pattern(regexp = "^((\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])\\.){3}(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])$")
     private String ip;
     @Pattern(regexp = "\\d+")
     private String port;
