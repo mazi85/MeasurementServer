@@ -69,17 +69,19 @@ public class DefaultMeasSourceService implements MeasSourceService {
                 .name(measSource.getName())
                 .ip(measSource.getIp())
                 .port(measSource.getPort())
-                .commProtocol(measSource.getCommProtocol())
+                .commProtocolId(measSource.getCommProtocol().getId())
                 .build();
     }
 
     @Override
     public void editMeasSource(EditMeasSourceForm editMeasSourceForm, Long measSourceId) {
         MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        CommProtocol commProtocol = commProtocolRepository.getReferenceById(editMeasSourceForm.getCommProtocolId());
+
         measSource.setName(editMeasSourceForm.getName());
         measSource.setIp(editMeasSourceForm.getIp());
         measSource.setPort(editMeasSourceForm.getPort());
-        measSource.setCommProtocol(editMeasSourceForm.getCommProtocol());
+        measSource.setCommProtocol(commProtocol);
         measSourceRepository.save(measSource);
     }
 }

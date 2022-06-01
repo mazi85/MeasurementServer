@@ -28,9 +28,9 @@
     <br/>
 
     Protokół:
-    <form:select path="commProtocol.id" itemValue="id" itemLabel="name" items="${protocols}"/>
+    <form:select path="commProtocolId" itemValue="id" itemLabel="name" items="${protocols}"/>
     <br/>
-    <form:errors path="commProtocol"/>
+    <form:errors path="commProtocolId"/>
     <br/>
 
     <input type="hidden" name="measSourceId" value="${measSourceId}">
