@@ -16,4 +16,6 @@ public interface SampleDefService {
     EditSampleDefForm findSampleDefById(Long sampleDefId);
 
     void editSampleDef(EditSampleDefForm editSampleDefForm, Long sampleDefId);
+
+    void deleteSampleDef(Long sampleDefId, Long measSourceId);
 }

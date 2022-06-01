@@ -78,4 +78,13 @@ public class DefaultSampleDefService implements SampleDefService {
         sampleDef.setHighRange(editSampleDefForm.getHighRange());
         sampleDefRepository.save(sampleDef);
     }
+
+    @Override
+    public void deleteSampleDef(Long sampleDefId, Long measSourceId) {
+        SampleDef sampleDef = sampleDefRepository.getReferenceById(sampleDefId);
+        MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        measSource.getSampleDefs().remove(sampleDef);
+        sampleDefRepository.delete(sampleDef);
+
+    }
 }
