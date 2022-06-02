@@ -14,7 +14,7 @@
 
 <body>
 <form:form method="POST" modelAttribute="editMeasSourceForm">
-    Nazwa: <form:input path="name"/>
+    Nazwą: <form:input path="name"/>
     <br/>
     <form:errors path="name"/>
     <br/>
