@@ -14,7 +14,7 @@ public class Sample {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double rawValue;
+    private Integer rawValue;
     private Double engValue;
     @ManyToOne
     @JoinColumn(name="meas_source_id")
