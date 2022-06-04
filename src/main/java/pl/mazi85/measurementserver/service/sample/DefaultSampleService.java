@@ -8,6 +8,7 @@ import pl.mazi85.measurementserver.model.SampleDef;
 import pl.mazi85.measurementserver.repository.MeasSourceRepository;
 import pl.mazi85.measurementserver.repository.SampleDefRepository;
 import pl.mazi85.measurementserver.repository.SampleRepository;
+import pl.mazi85.measurementserver.service.CalculateEngDataService;
 
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class DefaultSampleService implements SampleService{
     private final SampleRepository sampleRepository;
     private final MeasSourceRepository measSourceRepository;
     private final SampleDefRepository sampleDefRepository;
+    private final CalculateEngDataService calculateEngDataService;
 
     public void saveData (Map<String, Integer> valuesMap,Long measSourceId){
         MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
@@ -25,8 +27,10 @@ public class DefaultSampleService implements SampleService{
             Sample sample = new Sample();
             SampleDef sampleDef = sampleDefRepository.getReferenceById(Long.valueOf(sampleDefIdValueEntry.getKey()));
             sample.setSampleDef(sampleDef);
-            sample.setRawValue(Double.valueOf(sampleDefIdValueEntry.getValue()));
+            Integer rawValue = sampleDefIdValueEntry.getValue();
+            sample.setRawValue(rawValue);
             sample.setMeasSource(measSource);
+            sample.setEngValue(calculateEngDataService.getEngValue(sampleDef,rawValue));
             sampleRepository.save(sample);
         } {
 

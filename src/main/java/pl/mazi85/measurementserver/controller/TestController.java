@@ -29,9 +29,6 @@ import java.util.stream.Collectors;
 public class TestController {
 
     private final PlcReadDataService plcReadDataService;
-    private final MeasSourceRepository measSourceRepository;
-    private final SampleRepository sampleRepository;
-    private final SampleDefRepository sampleDefRepository;
 
     private final MeasSourceService measSourceService;
     private final SampleService sampleService;
