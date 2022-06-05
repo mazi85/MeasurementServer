@@ -7,11 +7,13 @@ import pl.mazi85.measurementserver.controller.meassource.EditMeasSourceForm;
 import pl.mazi85.measurementserver.controller.meassource.ListMeasSourceForm;
 import pl.mazi85.measurementserver.model.CommProtocol;
 import pl.mazi85.measurementserver.model.MeasSource;
+import pl.mazi85.measurementserver.model.SampleDef;
 import pl.mazi85.measurementserver.repository.CommProtocolRepository;
 import pl.mazi85.measurementserver.repository.MeasSourceRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -83,5 +85,28 @@ public class DefaultMeasSourceService implements MeasSourceService {
         measSource.setPort(editMeasSourceForm.getPort());
         measSource.setCommProtocol(commProtocol);
         measSourceRepository.save(measSource);
+    }
+
+    @Override
+    public String getMeasSourceConnectionString(Long measSourceId) {
+        MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        return measSource.getConnectionString();
+    }
+
+    @Override
+    public Map<Long,Integer> getMeasSourceRegisters(Long measSourceId) {
+        MeasSource measSource = measSourceRepository.getReferenceById(measSourceId);
+        return measSource.getSampleDefs().stream()
+                //.map(SampleDef::getRegister)
+                .collect(Collectors.toMap(
+                        SampleDef::getId,SampleDef::getRegister
+                ));
+    }
+
+    @Override
+    public List<Long> getScheduleEnableMeasSources() {
+        return measSourceRepository.findAllByRecordingIsTrue().stream()
+                .map(MeasSource::getId)
+                .collect(Collectors.toList());
     }
 }
