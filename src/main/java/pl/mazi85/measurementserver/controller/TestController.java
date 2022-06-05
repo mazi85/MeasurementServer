@@ -15,6 +15,7 @@ import pl.mazi85.measurementserver.repository.MeasSourceRepository;
 import pl.mazi85.measurementserver.repository.SampleDefRepository;
 import pl.mazi85.measurementserver.repository.SampleRepository;
 import pl.mazi85.measurementserver.service.PlcReadDataService;
+import pl.mazi85.measurementserver.service.SchedulingReadDataService;
 import pl.mazi85.measurementserver.service.meassource.MeasSourceService;
 import pl.mazi85.measurementserver.service.sample.SampleService;
 
@@ -32,17 +33,18 @@ public class TestController {
 
     private final MeasSourceService measSourceService;
     private final SampleService sampleService;
+    private final SchedulingReadDataService schedulingReadDataService;
 
     @GetMapping("/read/{measSourceId}")
     public String readPlcData(Model model, @PathVariable Long measSourceId) {
-        String connectionString = measSourceService.getMeasSourceConnectionString(measSourceId);
-        Map<Long,Integer> registers = measSourceService.getMeasSourceRegisters(measSourceId);
-
-        PlcReadResponse plcReadResponse = plcReadDataService.readPlcData(registers, connectionString);
-        Map<String, Integer> sampleDefIdValuesMap = plcReadDataService.getResponseValues(plcReadResponse);
-        model.addAttribute("valuesMap",sampleDefIdValuesMap);
-        sampleService.saveData(sampleDefIdValuesMap,measSourceId);
-
+//        String connectionString = measSourceService.getMeasSourceConnectionString(measSourceId);
+//        Map<Long,Integer> registers = measSourceService.getMeasSourceRegisters(measSourceId);
+//
+//        PlcReadResponse plcReadResponse = plcReadDataService.readPlcData(registers, connectionString);
+//        Map<String, Integer> sampleDefIdValuesMap = plcReadDataService.getResponseValues(plcReadResponse);
+//        model.addAttribute("valuesMap",sampleDefIdValuesMap);
+//        sampleService.saveData(sampleDefIdValuesMap,measSourceId);
+        schedulingReadDataService.readPlcData();
         return "testPlc";
     }
 

@@ -31,7 +31,7 @@ public class MeasSource {
     @ManyToOne
     @JoinColumn(name="protocol_id")
     private CommProtocol commProtocol;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "sources_defs",
             joinColumns = @JoinColumn(name = "meas_source_id"),
             inverseJoinColumns = @JoinColumn(name = "sample_def_id"))

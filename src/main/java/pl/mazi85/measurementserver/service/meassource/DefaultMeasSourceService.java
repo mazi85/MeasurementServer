@@ -102,4 +102,11 @@ public class DefaultMeasSourceService implements MeasSourceService {
                         SampleDef::getId,SampleDef::getRegister
                 ));
     }
+
+    @Override
+    public List<Long> getScheduleEnableMeasSources() {
+        return measSourceRepository.findAllByRecordingIsTrue().stream()
+                .map(MeasSource::getId)
+                .collect(Collectors.toList());
+    }
 }

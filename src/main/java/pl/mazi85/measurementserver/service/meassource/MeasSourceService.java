@@ -21,4 +21,6 @@ public interface MeasSourceService {
     String getMeasSourceConnectionString(Long measSourceId);
 
     Map<Long,Integer> getMeasSourceRegisters(Long measSourceId);
+
+    List<Long> getScheduleEnableMeasSources();
 }
