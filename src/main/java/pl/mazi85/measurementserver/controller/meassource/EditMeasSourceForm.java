@@ -22,6 +22,6 @@ public class EditMeasSourceForm {
     @Pattern(regexp = "\\d+")
     @NotNull
     private String port;
-
+    private boolean recording;
     private Long commProtocolId;
 }

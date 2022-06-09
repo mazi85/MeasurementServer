@@ -28,6 +28,7 @@
         <th>Nazwa</th>
         <th>Połączenie</th>
         <th>Pomiary:rejestry</th>
+        <th>Rejestracja danych</th>
         <th>ACTIONS</th>
     </tr>
     </thead>
@@ -41,6 +42,7 @@
                     ${sampleDef.name} : ${sampleDef.register}<br/>
                 </c:forEach>
             </td>
+            <td style="width: 150px"> ${measSource.recording} </td>
 
             <td style="width: 500px">
                 <a href="/meas-source/delete/${measSource.id}">USUŃ</a>

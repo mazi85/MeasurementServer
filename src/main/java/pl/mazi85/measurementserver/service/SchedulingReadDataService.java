@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.mazi85.measurementserver.service.meassource.MeasSourceService;
 import pl.mazi85.measurementserver.service.sample.SampleService;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
@@ -25,15 +26,19 @@ public class SchedulingReadDataService {
     @Async
     @Scheduled(fixedRate = 60000)
     @Transactional
+
     public void readPlcData() {
         List<Long> scheduleEnabledMeasSourceIds = measSourceService.getScheduleEnableMeasSources();
 
         for (Long measSourceId : scheduleEnabledMeasSourceIds) {
-        String connectionString = measSourceService.getMeasSourceConnectionString(measSourceId);
-        Map<Long, Integer> registers = measSourceService.getMeasSourceRegisters(measSourceId);
-            PlcReadResponse plcReadResponse = plcReadDataService.readPlcData(registers, connectionString);
-            Map<String, Integer> sampleDefIdValuesMap = plcReadDataService.getResponseValues(plcReadResponse);
-            sampleService.saveData(sampleDefIdValuesMap, measSourceId);
+            try {
+                String connectionString = measSourceService.getMeasSourceConnectionString(measSourceId);
+                Map<Long, Integer> registers = measSourceService.getMeasSourceRegisters(measSourceId);
+                PlcReadResponse plcReadResponse = plcReadDataService.readPlcData(registers, connectionString);
+                Map<String, Integer> sampleDefIdValuesMap = plcReadDataService.getResponseValues(plcReadResponse);
+                sampleService.saveData(sampleDefIdValuesMap, measSourceId);
+            } catch (RuntimeException e) {
+            }
         }
 
     }

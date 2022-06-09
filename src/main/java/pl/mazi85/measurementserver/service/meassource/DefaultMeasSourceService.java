@@ -35,6 +35,7 @@ public class DefaultMeasSourceService implements MeasSourceService {
                 .ip(createMeasSourceForm.getIp())
                 .port(createMeasSourceForm.getPort())
                 .commProtocol(commProtocol)
+                .recording(createMeasSourceForm.isRecording())
                 .build());
     }
 
@@ -51,6 +52,7 @@ public class DefaultMeasSourceService implements MeasSourceService {
                             .name(r.getName())
                             .connectionString(r.getConnectionString())
                             .sampleDefs(r.getSampleDefs())
+                            .recording((r.isRecording()))
                             .build();
                 })
                 .collect(Collectors.toList());
@@ -84,6 +86,7 @@ public class DefaultMeasSourceService implements MeasSourceService {
         measSource.setIp(editMeasSourceForm.getIp());
         measSource.setPort(editMeasSourceForm.getPort());
         measSource.setCommProtocol(commProtocol);
+        measSource.setRecording(editMeasSourceForm.isRecording());
         measSourceRepository.save(measSource);
     }
 

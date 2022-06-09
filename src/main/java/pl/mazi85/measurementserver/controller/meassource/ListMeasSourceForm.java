@@ -15,5 +15,6 @@ public class ListMeasSourceForm {
     private String name;
     private String connectionString;
     private List<SampleDef> sampleDefs;
+    private boolean recording;
 
 }
