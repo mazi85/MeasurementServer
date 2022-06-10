@@ -1,5 +1,6 @@
 package pl.mazi85.measurementserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Cascade;
@@ -28,8 +29,10 @@ public class SampleDef {
     @Min(1)
     private Integer register;
     @ManyToMany(mappedBy = "sampleDefs")
+    @JsonIgnore
     private List<MeasSource> measSources = new ArrayList<>();
     @OneToMany(mappedBy = "sampleDef",cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Sample> samples = new ArrayList<>();
 
 }

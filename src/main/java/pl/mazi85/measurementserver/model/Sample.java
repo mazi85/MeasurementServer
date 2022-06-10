@@ -18,9 +18,7 @@ public class Sample {
     private Long id;
     private Integer rawValue;
     private Double engValue;
-//    @ManyToOne
-//    @JoinColumn(name="meas_source_id")
-//    private MeasSource measSource;
+
     @ManyToOne
     @JoinColumn(name="sample_def_id")
     private SampleDef sampleDef;
