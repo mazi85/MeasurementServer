@@ -10,12 +10,14 @@ import pl.mazi85.measurementserver.model.SampleDef;
 import pl.mazi85.measurementserver.repository.MeasSourceRepository;
 import pl.mazi85.measurementserver.repository.SampleDefRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Service
 @RequiredArgsConstructor
+
 public class DefaultSampleDefService implements SampleDefService {
 
     private final SampleDefRepository sampleDefRepository;

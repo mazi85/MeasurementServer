@@ -32,7 +32,10 @@
     <br/>
     <form:errors path="commProtocolId"/>
     <br/>
-
+    Rejestracja danych:
+    <form:radiobutton path="recording" label="Włączone" value="true"/>
+    <form:radiobutton path="recording" label="Wyłączone" value="false"/>
+    <br/>
     <input type="hidden" name="measSourceId" value="${measSourceId}">
     <input type="submit">
 </form:form>

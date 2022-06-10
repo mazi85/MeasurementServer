@@ -19,6 +19,6 @@ public class CreateMeasSourceForm {
     @Pattern(regexp = "[1-9]\\d*")
     @NotNull
     private String port;
-
+    private boolean recording;
     private Long commProtocolId;
 }
