@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<c:forEach items="${valuesMap}" var="entry">
-    ${entry.key} - ${entry.value} <br/>
+<c:forEach items="${samples}" var="sample">
+    ${sample.sampleDef.name} ${sample.engValue} ${sample.sampleDef.unit} <br/>
 </c:forEach>
 
 <div>

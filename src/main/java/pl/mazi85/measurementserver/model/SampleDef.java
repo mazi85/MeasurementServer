@@ -2,6 +2,7 @@ package pl.mazi85.measurementserver.model;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Setter @Getter @Slf4j @Builder @AllArgsConstructor @NoArgsConstructor
 @Entity(name = "sample_defs")
+
 public class SampleDef {
 
     @Id
@@ -27,5 +29,7 @@ public class SampleDef {
     private Integer register;
     @ManyToMany(mappedBy = "sampleDefs")
     private List<MeasSource> measSources = new ArrayList<>();
+    @OneToMany(mappedBy = "sampleDef",cascade = CascadeType.REMOVE)
+    private List<Sample> samples = new ArrayList<>();
 
 }
